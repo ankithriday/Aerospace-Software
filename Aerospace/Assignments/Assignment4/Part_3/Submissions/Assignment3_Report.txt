@@ -1,0 +1,51 @@
+Connor Kerry and Ankit Hriday
+Assignment 4 Part 3: Version Control
+2/26/2018
+
+I. Construction of a Repository Directory Structure:
+To construct these directory structures, files and changes were done in our local git repositories and then updated to the remote repositories. In order to do this we first cloned our private repositories onto our local virtual machines using: 
+     git clone {web address of our private repository}
+
+Then after adding the appropriate files in our local repositories we added each file, committed each file and pushed the commits to GitHub...
+     git add {filename}
+     git commit -m "Added files and directory structure"
+     git push origin master
+
+II. Group Collaborative Document Editing:
+  1. git checkout -b Current_Assignment
+     git push origin Current_Assignment
+  2. First created Part_3 directory then Submission Directory in new branch
+  3. Inside Assignments/Assignment_4/Part_3/Submission created README.md
+  4. After adding test, added, committed, and pushed to Current_Assignment branch
+     git add README.md
+     git commit -m "Added README.md file"
+     git push origin Current_Assignment
+  5. git clone {Member #1's Repository URL}
+  6. git checkout Current_Assignment
+     *EDITED README.md FILE*
+  7. git add README.md
+     git commit -m "Edited README.md"
+     git push origin Current_Assignment
+  8. Locally edited README.md before pulling...
+  9. git add README.md
+     git commit -m "Added to README.md"
+ 10. git pull origin Current_Assignment
+     An error arose after trying to pull because by doing this Member #1 was trying to merge two different versions of the same document into one on their local repository, so we have to go in and manually update the file with both edits added by Member #1 and Member #2, and commit the updated file.
+ 11. To fix merge conflict we simply opened README.md in nano and updated the changes shown in the file to reflect the desired file contents. Then Member #1 simply added, committed, and pushed the fixes:
+     git add README.md
+     git commit -m "Fixed merge conflict"
+     git push origin Current_Assignment
+ 12. git pull origin Current_Assignment
+ 13. git checkout master
+     git merge Current_Assignment
+ 14. git push origin master
+     Next Member #2 creates own directory Assignments/Assignment_4/Part_3/Submission and adds file with git add, commits with git commit, and pushes with git push (to their private remote repository)
+
+III. Class Collaborative Document Editing:
+  We both cloned the shared repository from GitHub by using:
+     git clone {GitHub Shared ASEN4057 Repository URL}
+  Then we edited the README.md file and pulled to check for conflicts then added, committed, and pushed our changes:
+     git pull
+     git add README.md
+     git commit -m "Edited README.md"
+     git push
