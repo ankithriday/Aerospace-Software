@@ -1,0 +1,101 @@
+Connor Kerry and Ankit Hriday
+ASEN 4057 Assignment 4 Part 2
+
+1. ls -a -long
+
+2. ls -a -long
+total 152
+drwxr-xr-x 21 4096 Feb 19 10:35 .
+drwxr-xr-x  3 4096 Feb 18 21:38 ..
+-rw-rw-r--  1   80 Feb 19 10:35 ASEN4057_Assignment4_Part2.txt
+-rw-------  1  621 Feb 19 00:51 .bash_history
+-rw-r--r--  1  220 Feb 18 21:38 .bash_logout
+-rw-r--r--  1 3771 Feb 18 21:38 .bashrc
+drwx------ 12 4096 Feb 19 10:26 .cache
+drwx------  3 4096 Feb 19 00:51 .compiz
+drwx------ 15 4096 Feb 18 23:41 .config
+drwxr-xr-x  3 4096 Feb 19 00:13 Desktop
+drwxr-xr-x  3 4096 Feb 19 00:48 Documents
+drwxr-xr-x  2 4096 Feb 18 21:41 Downloads
+-rw-r--r--  1 8980 Feb 18 21:38 examples.desktop
+drwx------  2 4096 Feb 18 21:43 .gconf
+drwx------  3 4096 Feb 19 10:25 .gnupg
+-rw-------  1  724 Feb 19 10:25 .ICEauthority
+drwxrwxr-x  3 4096 Feb 18 22:01 .java
+drwx------  3 4096 Feb 18 21:41 .local
+drwxrwxr-x  3 4096 Feb 18 22:42 .matlab
+drwx------  4 4096 Feb 18 21:43 .mozilla
+drwxr-xr-x  2 4096 Feb 18 21:41 Music
+drwxrwxr-x  2 4096 Feb 19 00:08 .oracle_jre_usage
+drwxr-xr-x  2 4096 Feb 18 21:41 Pictures
+-rw-r--r--  1  655 Feb 18 21:38 .profile
+drwxr-xr-x  2 4096 Feb 18 21:41 Public
+drwxrwxr-x  3 4096 Feb 19 00:10 .subversion
+-rw-r--r--  1    0 Feb 18 22:03 .sudo_as_admin_successful
+drwxr-xr-x  2 4096 Feb 18 21:41 Templates
+-rw-r-----  1    5 Feb 19 10:25 .vboxclient-clipboard.pid
+-rw-r-----  1    5 Feb 19 10:25 .vboxclient-display.pid
+-rw-r-----  1    5 Feb 19 10:25 .vboxclient-draganddrop.pid
+-rw-r-----  1    5 Feb 19 10:25 .vboxclient-seamless.pid
+drwxr-xr-x  2 4096 Feb 18 21:41 Videos
+-rw-------  1  711 Feb 19 10:35 .viminfo
+-rw-------  1   62 Feb 19 10:25 .Xauthority
+-rw-------  1   82 Feb 19 10:25 .xsession-errors
+-rw-------  1 1174 Feb 19 00:51 .xsession-errors.old
+
+3. The first ten characters imply the file type (first character), and the permissions (last nine characters). The permissions are given in groups of three for the owner, the group, and the world. For example, r means that user has permission to read the file, while w means the user has permission to write to the file.
+
+4. du -h
+
+5. cp: Copies a file into a set directory.
+cat: conCATenates a files contents to the output. Can be used to display contents of a file or to write/append to a file.
+pwd: Prints the name of the Working Directory to the screen.
+mkdir: Creates a directory with a set name in a given directory.
+kill: Send processes signals by their PID. This sends the TERM signal which terminates the program.
+
+6. 
+- To create folder: mkdir ASEN4519
+- First change to ASEN4519 directory: cd ASEN4519
+  Then create .txt file: touch asen4519test.txt
+- Used vim to edit text file.
+- Change user permissions: chmod 755 asen4519test.txt
+- Show all contents of ~/Documents/ASEN4519: ls -a -l
+  total 12
+  drwxrwxr-x 2 connor connor 4096 Feb 19 12:22 .
+  drwxr-xr-x 4 connor connor 4096 Feb 19 12:22 ..
+  -rwxr-xr-x 1 connor connor  105 Feb 19 12:21 asen4519test.txt
+- Display contents of file: cat asen4519test.txt
+  Connor Kerry - Class of 2018 - Favorite Movie: 300
+  Ankit Hriday - Class of 2018 - Favorite Movie: Avatar
+- Move file to home directory: mv asen4519test.txt ~/
+  To verify it is there, first change dir: cd ~/
+  Then check if it's there: ls
+  asen4519test.txt  Documents  examples.desktop  Pictures  Templates
+  Desktop           Downloads  Music             Public    Videos
+- Rename file: mv asen4519test.txt asen4519.txt
+  Verify it has changed: ls
+  asen4519.txt  Documents  examples.desktop  Pictures  Templates
+  Desktop       Downloads  Music             Public    Videos
+- Remove file: rm asen4519.txt
+  Verify it has been deleted: ls
+  Desktop    Downloads         Music     Public     Videos
+  Documents  examples.desktop  Pictures  Templates
+
+7.
+- Start MATLAB: matlab #
+- Asses process expenses: top
+  MATLAB is using 0.3% CPU and 15.1% Memory
+- It took 8.930854s to run line, and during it used: 99.0% CPU and 55.3% Memory
+  Once done, MATLAB is now utilizing: 0.3% CPU and 73.7% Memory
+- Run MATLAB as bg process w/ -15 nice value: sudo nice --15 matlab &
+  It took 8.843513s to run line this time with a -15 nice level. This little bit shorter time is what we would expect because it took less time to run the program when the nice priority was set to be more urgent (more negative/higher priority). However, this small time difference could be indicative of the fact that the CPU percentage was already at its maximum possible value for a nice setting of 0 (it was at 99%), and therefore this nice setting change did not actually affect the performance speed of MATLAB.
+
+8. The actual executable for MATLAB is located in the directory /usr/local/bin and you can start it from the command line without the full path name because it uses symbolic links, which use a symbolic variable that references the full pathname/directory path that the machine needs in order to execute the program.
+
+9. The bash shell searches the bin of executable bash script programs to run different commands on our VM. That info is stored in the bin/ directory. Yes you can change the location where the bash shell searches for programs.
+
+10. ls /bin | sort | ls /usr/bin | sort > ~/Documents/usefulprograms.txt
+
+11. Default terminal for VM is xterm. This is set in the /etc/environment directory.
+
+12. To change the default text editor (which was originally gedit), first we opened the "Files" GUI app and right clicked on a .txt file, then clicked properties. Next we went to the "Open With" tab and selected Vim and clicked the "Set as default" button. This changed the default editor to Vim.
