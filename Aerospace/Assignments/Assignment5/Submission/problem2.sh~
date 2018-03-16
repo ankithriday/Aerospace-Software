@@ -1,0 +1,23 @@
+#!/bin/bash
+# Ankit Hriday
+# Problem-2
+
+echo "Problem-2 Assignment-5"
+
+echo "Inputs is $1"
+
+FileName=$1
+
+a=$(ls -l $FileName);
+# b=$(head -c 4 $a);
+type=${a:0:1}
+echo The File Type is $type
+
+perm=${a:1:3}
+echo The permissions for the Owner are $perm
+
+
+
+
+
+
