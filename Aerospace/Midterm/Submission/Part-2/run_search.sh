@@ -3,6 +3,7 @@
 # Part-2.2
 # 29th March, 2018
 
+# Looping through 17 56 and 78
 for i in 17 56 68; 
 do
 	./search Array1.in $i

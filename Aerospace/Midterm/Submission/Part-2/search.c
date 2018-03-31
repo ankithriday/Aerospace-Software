@@ -4,144 +4,149 @@ Midterm Part-2
 29th March, 2018
 */
 
-#include<stdlib.h>
-#include<stdio.h>
+// Include Libraries
 #include<string.h>
 #include<math.h>
 #include<ctype.h>
+#include<stdlib.h>
+#include<stdio.h>
 
 
 // Defining functions to be used later in the script
-int linear_search(int* array, int length, int target_num);
-int binary_search(int* array, int length, int target_num);
+int lin_search(int* array, int size, int target);
+int bin_search(int* array, int size, int target);
 
-// Argument format: Array.in target_num
+// Argument format: Array.in target
 int main(int argc, char* argv[]){ 
 
 // Define the variables to use
 int i=0;
 char line [80];
-int sort;
-FILE *fp; // Make a pointer to the file
-int target_num = atoi(argv[2]); 
+int sortNumber;
+FILE *f_p; // Make a pointer to the file
+int target = atoi(argv[2]); 
 
 
-// Open the file and read the number of lines
-fp = fopen(argv[1],"r");
+// Open the file and read the number of linesNumber
+f_p = fopen(argv[1],"r");
 
 int ch=0;
-int lines=0;
+int linesNumber=0;
 
-  while (!feof(fp)){
-      ch = fgetc(fp);
+  while (!feof(f_p)){
+      ch = fgetc(f_p);
       if (ch == '\n'){
-      	lines++;
+      	linesNumber++;
       }
     }
 
-fclose(fp);
+fclose(f_p);
 
-int length = lines; //length of array
+int size = linesNumber; //size of array
 
-// Dynamically allocate memory into array
-int* array = malloc(length * sizeof(int));
+// Dynamically allocating memory into array
+int* array = malloc(size * sizeof(int));
 
-//Open the file for reading and put it into an array
-fp = fopen(argv[1],"r");
+// Opening the file for reading and putting it in arrays
+f_p = fopen(argv[1],"r");
 
 
-	while (fgets(line,sizeof line,fp)!=NULL){
+	while (fgets(line,sizeof line,f_p)!=NULL){
 		array[i] = atoi(line);
 		i++;
 	}
 
-fclose(fp); // Close the file
+fclose(f_p); // Close file
 
 
-// Check if the file is sorted
-sort = 1; // Assume its sorted
+// Check file sortNumber
+sortNumber = 1; // Assuming sortNumber
 
-	for (i=0; i <length-1;i++){
+	for (i=0; i <size-1;i++){
 		if (array[i] > array[i+1])
-		sort = 0;
+		sortNumber = 0;
 	}
 
 
-// Write to the output file
-char* basename = strtok(argv[1],".");
-strcat(basename,".out");
+// Output file writing
+char* base_n = strtok(argv[1],".");
+strcat(base_n,".out");
 
+// We use linear search if the file is not sortNumbered otherwise we use 
+// binary search
 
-// If the files is not sorted, use linear search
-if (sort==0){
-	int Index; 
-	Index = linear_search(array, length,target_num);
-	if (Index > -1)
+// If the files is not sortNumbered, use linear search
+if (sortNumber==0){
+	int new_ind; 
+	new_ind = lin_search(array, size,target);
+	if (new_ind > -1)
 	{
-		fp=fopen(basename,"a");
-		fprintf(fp,"The position of %d is %d\n",target_num,Index+1);
-		printf("The position of %d is %d\n",target_num,Index+1);
-		fclose(fp);
+		f_p=fopen(base_n,"a");
+		f_printf(f_p,"The position of %d is %d\n",target,new_ind+1);
+		printf("The position of %d is %d\n",target,new_ind+1);
+		fclose(f_p);
 	}
 	else
 	{
-		fp=fopen(basename,"a");
-		fprintf(fp,"The number %d does not exist in array!\n",target_num);
-		printf("The number %d does not exist in array!\n",target_num);
-		fclose(fp);
+		f_p=fopen(base_n,"a");
+		f_printf(f_p,"The number %d does not exist in array!\n",target);
+		printf("The number %d does not exist in array!\n",target);
+		fclose(f_p);
 	}
 	
 }
-// If it is sorted, use binary search
+// If sortNumbered, using bin search
 else{
 	int M;
-	M = binary_search(array, length, target_num);
+	M = bin_search(array, size, target);
 	if (M < 0)
 	{
-		fp=fopen(basename,"a");
-		fprintf(fp,"The number %d does not exist in array!\n",target_num);
-		printf("The number %d does not exist in array!\n",target_num);
-		fclose(fp);
+		f_p=fopen(base_n,"a");
+		f_printf(f_p,"The number %d does not exist in array!\n",target);
+		printf("The number %d does not exist in array!\n",target);
+		fclose(f_p);
 	}
 	else
 	{
-		fp=fopen(basename,"a");
-		fprintf(fp,"The position of %d is %d\n",target_num,M+1);
-		printf("The position of %d is %d\n",target_num,M+1);
-		fclose(fp);
+		f_p=fopen(base_n,"a");
+		f_printf(f_p,"The position of %d is %d\n",target,M+1);
+		printf("The position of %d is %d\n",target,M+1);
+		fclose(f_p);
 	}
 }
 
 return 0;
 }
 
-// Linear Search Function
-int linear_search(int* array, int length, int target_num){
-int i;
-int Index;
-
-for (i = 0;i<length;i++){
-	if (array[i] == target_num){
-		Index = i;
-		return Index;
-	}
-}
-	return -1;
-}
 
 // Binary Search Function
-int binary_search(int* array, int length, int target_num){
+int bin_search(int* array, int size, int target){
 int L=0;
-int R = length;
+int R = size;
 int M;
  while (L < R){
   M =  (L+R-1)/2;
-  if (target_num==array[M])
+  if (target==array[M])
   	return M; //Found.
-  else if (target_num < array[M])
+  else if (target < array[M])
   R = M; //First half
   else
   L = M+1; //Second half
 }
 return -1; //Number not in array
 } 
+
+
+// Linear Search Function
+int lin_search(int* array, int size, int target){
+int i;
+int new_ind;
+
+for (i = 0;i<size;i++){
+	if (array[i] == target){
+		new_ind = i;
+		return new_ind;
+	}
+}
+	return -1;
+}
