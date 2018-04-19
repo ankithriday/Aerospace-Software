@@ -63,9 +63,10 @@ As checked from Solution_Example folder heat_solution_2_2.txt
 1.000000 1.000000 0.000000 
 
 Any number with x or y position of 1 and 0 will have 0 temperature. While 0.5 is 0.5^4 = 0.0625
+Also, while changing the grid size, we noticed for problem 2 as seen from the matlab file, the errors change from 0,8.33e-6 and 4.00e-8 for a grid size of 0.5, 0.3 , 0.25 respectively
 
-
-The MATLAB file assignment7Part2_3.m does the calculations and produces the errors
+The MATLAB file assignment7Part2_3.m does the calculations and produces the errors. Use the one inside the solution example folder to get answers.
 
 
 2.4
+It came out to be about 157 J. The calculations are done in part_2_4.m . Its also kept inside the solution example folder for easier calculation
