@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+#These are all the possible combinations between the three matrices. 
+#they will be run through the mat_ops code and the value of the
+# operations will be saved in the given naming convention. 
+mv functions.c $1
+mv FUNCTIONS.h $1
+mv mat_ops.c $1
+mv tester.c $1
+mv write_to_file.c $1
+
+gcc -o mat_ops mat_ops.c functions.c write_to_file.c -lblas -lgfortran 
+
+printf "Calculating all possible permutations\n" 
+./mat_ops A B C
+./mat_ops A C B
+./mat_ops B A C
+./mat_ops B C A
+./mat_ops C A B
+./mat_ops C B A
+
+echo "Finished with all the permutations. Check the output files."
