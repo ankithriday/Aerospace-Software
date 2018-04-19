@@ -1,0 +1,71 @@
+Ankit Hriday
+Assignment-7 Report
+April-18, 2018
+
+Part-1
+1.1
+
+Command runs using
+
+gcc -o mat_ops mat_ops.c functions.c write_to_file.c -lblas -lgfortran 
+ ./mat_ops A B C while in the same folder
+
+1.2
+
+ ./batch_mat_multiply.sh Test
+
+
+Part-2
+
+ 2.1
+
+gcc heat_solve.c Build_LHS.c Build_RHS.c BC.c Source.c functions.c Conductivity.c Output.c -lm -llapacke -llapack -lblas -lgfortran 
+
+Run
+./a.out $1 $2
+
+./a.out 2 1 for problem-1  and
+./a.out 2 2 for problem-2  and
+./a.out 2 3 for problem-3  and
+./a.out 2 4 for problem-4  and
+./a.out 2 5 for problem-5  and
+
+2.2
+
+type make clean 
+
+2.3
+
+As checked from Solution_Example folder heat_solution_2_1.txt
+
+0.000000 0.000000 0.000000 
+0.000000 0.500000 0.000000 
+0.000000 1.000000 0.000000 
+0.500000 0.000000 0.500000 
+0.500000 0.500000 0.500000 
+0.500000 1.000000 0.500000 
+1.000000 0.000000 1.000000 
+1.000000 0.500000 1.000000 
+1.000000 1.000000 1.000000 
+
+The temperature column is exactly the same as the x-position
+
+As checked from Solution_Example folder heat_solution_2_2.txt
+
+0.000000 0.000000 0.000000 
+0.000000 0.500000 0.000000 
+0.000000 1.000000 0.000000 
+0.500000 0.000000 0.000000 
+0.500000 0.500000 0.062500 
+0.500000 1.000000 0.000000 
+1.000000 0.000000 0.000000 
+1.000000 0.500000 0.000000 
+1.000000 1.000000 0.000000 
+
+Any number with x or y position of 1 and 0 will have 0 temperature. While 0.5 is 0.5^4 = 0.0625
+
+
+The MATLAB file assignment7Part2_3.m does the calculations and produces the errors
+
+
+2.4
